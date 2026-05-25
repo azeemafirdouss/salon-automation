@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE } from '../api';
 
 const Home = () => {
   const [reviews, setReviews] = useState([]);
@@ -10,8 +11,8 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [reviewsRes, staffRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/reviews'),
-          axios.get('http://localhost:5000/api/auth/public/staff')
+          axios.get(`${API_BASE}/api/reviews`),
+          axios.get(`${API_BASE}/api/auth/public/staff`)
         ]);
         setReviews(reviewsRes.data);
         setStaff(staffRes.data);

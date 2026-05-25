@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
+import { API_BASE } from '../api';
 
 // ---- Validation Helpers ----
 const validateName = (name) => {
@@ -90,7 +91,7 @@ const Register = () => {
 
     try {
       // Send raw digits to backend
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post(`${API_BASE}/api/auth/register`, {
         ...formData,
         phone: formData.phone.replace(/\D/g, '') // send pure digits
       });

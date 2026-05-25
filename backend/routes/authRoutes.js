@@ -85,7 +85,7 @@ router.post('/forgot-password', async (req, res) => {
         html: `
           <h3>Hello ${user.name},</h3>
           <p>You requested a password reset. Here is your 6-digit authorization code:</p>
-          <h2 style={{ background: '#f3f4f6', padding: '10px', display: 'inline-block', letterSpacing: '2px' }}>${otp}</h2>
+          <h2 style="background: #f3f4f6; padding: 10px; display: inline-block; letter-spacing: 2px;">${otp}</h2>
           <p>Please enter this code on the website to reset your password. It expires in 10 minutes.</p>
           <p>If you did not request this, please ignore this email.</p>
         `

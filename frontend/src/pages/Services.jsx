@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API_BASE } from '../api';
 
 const categories = ['All', 'Hair', 'Coloring', 'Skincare & Spa', 'Nails & Grooming', 'Makeup'];
 
@@ -22,7 +23,7 @@ const Services = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/services');
+        const res = await axios.get(`${API_BASE}/api/services`);
         setServices(res.data);
       } catch (err) {
         console.error('Failed to fetch services', err);

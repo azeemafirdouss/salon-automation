@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
+import { API_BASE } from '../api';
 
 const ForgotPassword = () => {
   const [step, setStep] = useState(1); // Step 1: email, Step 2: OTP + new password
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
     setMessage('');
     setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const res = await axios.post(`${API_BASE}/api/auth/forgot-password`, { email });
       setMessage(res.data.message);
       setStep(2);
     } catch (err) {
@@ -35,7 +36,7 @@ const ForgotPassword = () => {
     if (newPassword !== confirmPassword) return setError('Passwords do not match');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/reset-password', {
+      const res = await axios.post(`${API_BASE}/api/auth/reset-password`, {
         email,
         otp,
         newPassword
